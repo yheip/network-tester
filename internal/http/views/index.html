@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Network tester</title>
+        <link rel="stylesheet" href="/public/main.css" />
+        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+    </head>
+    <body>
+        <div class="m-20">
+            <h1 class="text-3xl font-bold underline">Network tester</h1>
+            <form hx-post="/httptest" hx-target="#httptest">
+                <div class="flex items-center border-b border-gray-500 py-2">
+                    <input name="url" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="http://">
+                    <button type="submit" class="flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+                    Get
+                    </button>
+                </div>
+            </form>
+
+
+            <div id="httptest" hx-ext="sse" sse-connect="/sse">
+            </div>
+        </div>
+    </body>
+</html>
